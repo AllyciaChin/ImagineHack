@@ -35,7 +35,7 @@
 Visit: [http://127.0.0.1:5500/landing.html](http://127.0.0.1:5500/landing.html)
 
 ## Screenshots
-![Home](homepage.png)
+![Home](home.png)
 ![Explore](explore.png)
 ![Game](game.png)
 ![Passport](passport.png)
