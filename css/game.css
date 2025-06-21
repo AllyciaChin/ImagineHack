@@ -1,0 +1,255 @@
+@import url('https://fonts.googleapis.com/css2?family=Gaegu&family=Montserrat:wght@300;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-decoration: none;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: rgb(255, 255, 255);
+}
+
+#header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background-image: url('../img/bgd1.png');
+  background-color: rgba(0, 0, 0, 0.65);
+  height: 300px;
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+  background-blend-mode: darken;
+  transition: background-image 0.5s;
+}
+
+nav {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  padding: 10px 50px;
+  box-sizing: border-box;
+  z-index: 999;
+}
+
+nav ul {
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+nav ul li a {
+  position: relative;
+  line-height: 50px;
+  color: #c3c3c3;
+  letter-spacing: 0.5px;
+  padding: 1px 10px;
+  margin: 0 15px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: "Montserrat", sans-serif;
+}
+
+nav ul li a:after {
+  content: "";
+  position: absolute;
+  background-color: #008cff;
+  height: 3px;
+  width: 0;
+  left: 0;
+  bottom: -10px;
+  transition: 0.3s;
+}
+
+nav ul li a:hover {
+  color: #fff;
+}
+
+nav ul li a:hover:after {
+  width: 100%;
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, #b4afff, #bcceff, #ffb8f2);
+  min-height: 80vh;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.game-card {
+  background: rgba(0, 0, 0, 0.121);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 1rem;
+  padding: 2rem 2rem 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.game-card:hover {
+  background: rgba(255, 255, 255, 0.392);
+  transform: scale(1.05);
+}
+
+.game-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #193ea5;
+}
+
+.play-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  margin-top: 10px;
+}
+
+.play-btn:hover {
+  opacity: 0.8;
+}
+
+.blue {
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+}
+
+.green {
+  background: linear-gradient(45deg, #10b981, #06b6d4);
+}
+
+.pink {
+  background: linear-gradient(45deg, #ec4899, #ef4444);
+}
+
+.game-section {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.back-btn,
+.reset-btn {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  color: rgb(255, 255, 255);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  margin: 0.5rem;
+}
+
+.game-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.puzzle-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.2rem;
+  max-width: 370px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+}
+
+.puzzle-tile {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  background: linear-gradient(45deg, #3b82f6, #8b5cf6);
+  border-radius: 0.3rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.puzzle-tile:hover {
+  transform: scale(1.05);
+}
+
+.memory-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+  max-width: 400px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.memory-card {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: linear-gradient(45deg, #6b7280, #374151);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.memory-card.flipped {
+  background: linear-gradient(45deg, #ec4899, #ef4444);
+}
+
+.memory-card.matched {
+  border: 3px solid #10b981;
+}

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/passport.css">
+  <script src="js/passport.js"></script>
+  <title>Cultural Trail - Passport</title>
+</head>
+
+<body>
+  <div id="header">
+    <nav>
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="game.html">Game</a></li>
+        <li><a href="passport.html">Passport</a></li>
+        <div id="google_translate_element"></div>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="passport_container">
+    <header class="passport_header">
+      <h1>Malaysia Digital Passport</h1>
+      <p>Collect stamps from Malaysia's most beautiful destinations!</p>
+      <div class="passport_stats">
+        <span id="stamps_collected">0</span> / <span id="total_destinations">10</span> destinations visited
+      </div>
+    </header>
+
+    <div class="passport_book">
+      <div class="destinations_grid" id="destinations_grid">
+        <!-- Destinations will be populated by JavaScript -->
+      </div>
+    </div>
+
+    <div class="passport_summary">
+      <h3>Your Journey Progress</h3>
+      <div class="progress_bar">
+        <div class="progress_fill" id="progress_fill"></div>
+      </div>
+      <p id="progress_text">Start your Malaysian adventure!</p>
+    </div>
+
+    <!-- Modal for destination details -->
+    <div id="destination_modal" class="modal">
+      <div class="modal_content">
+        <span class="close">&times;</span>
+        <div id="modal_body">
+          <!-- Modal content will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievement popup -->
+    <div id="achievement_popup" class="achievement_popup">
+      <div class="achievement_content">
+        <h3>🎉 Achievement Unlocked!</h3>
+        <p id="achievement_text"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ms,zh-CN',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
+    // Get ?lang=zh-CN from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get("lang");
+
+    // Wait for Translate dropdown to load, then set value
+    window.addEventListener("load", () => {
+      if (lang) {
+        const interval = setInterval(() => {
+          const combo = document.querySelector(".goog-te-combo");
+          if (combo) {
+            combo.value = lang;
+            combo.dispatchEvent(new Event("change"));
+            clearInterval(interval);
+          }
+        }, 500);
+      }
+
+      // Add ?lang=... to all internal links
+      document.querySelectorAll("a").forEach(link => {
+        if (link.href.includes(".html") && lang) {
+          const newHref = link.href.split("?")[0] + "?lang=" + lang;
+          link.href = newHref;
+        }
+      });
+    });
+
+    // Store selection in URL
+    const observer = new MutationObserver(() => {
+      const combo = document.querySelector(".goog-te-combo");
+      if (combo) {
+        combo.addEventListener("change", () => {
+          const selected = combo.value;
+          const currentURL = window.location.pathname.split("/").pop();
+          window.location.href = `${currentURL}?lang=${selected}`;
+        });
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+
+
+</body>
+
+</html>

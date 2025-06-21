@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Explore Malaysia's rich cultural heritage, diverse people, delicious cuisine, and vibrant traditions" />
+  <meta name="author" content="Malaysia Heritage" />
+  <meta property="og:title" content="Malaysia Cultural Heritage" />
+  <meta property="og:description" content="Discover Malaysia's rich cultural tapestry" />
+  <meta property="og:type" content="website" />
+  <title>Cultural Trail - Home</title>
+  <link rel="stylesheet" href="css/landing.css">
+</head>
+
+<body>
+  <div id="header">
+    <nav>
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="game.html">Game</a></li>
+        <li><a href="passport.html">Passport</a></li>
+        <div id="google_translate_element"></div>
+      </ul>
+    </nav>
+  </div>
+
+  <section id="home" class="hero">
+    <div class="container">
+      <div class="hero-content fade-in">
+        <h1>Discover Malaysia's Rich Heritage</h1>
+        <p>Journey through the vibrant tapestry of Malaysian culture, where ancient traditions blend seamlessly with
+          modern life</p>
+        <a href="#culture" class="cta-button">Explore Our Culture</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="culture" class="culture">
+    <div class="container">
+      <h2 class="section-title">Cultural Treasures</h2>
+      <div class="culture-grid">
+        <div class="culture-card">
+          <img src="img/architecture.jpg" alt="Traditional Architecture">
+          <div class="culture-card-content">
+            <h3 style="text-align: center;">Traditional Architecture</h3>
+            <p style="text-align: justify;">Marvel at the intricate designs of traditional Malay houses, Chinese
+              shophouses, and Indian temples that
+              dot Malaysia's landscape, each telling stories of our multicultural heritage.</p>
+          </div>
+        </div>
+        <div class="culture-card">
+          <img src="img/festival.jpg" alt="Festivals">
+          <div class="culture-card-content">
+            <h3 style="text-align: center;">Vibrant Festivals</h3>
+            <p style="text-align: justify;">Experience the joy of Hari Raya, Chinese New Year, Deepavali, and Gawai -
+              celebrations that bring
+              communities together in colorful displays of unity and tradition.</p>
+          </div>
+        </div>
+        <div class="culture-card">
+          <img src="img/arts.jpg" alt="Arts and Crafts">
+          <div class="culture-card-content">
+            <h3 style="text-align: center;">Arts & Crafts</h3>
+            <p style="text-align: justify;">Discover the beauty of batik, songket weaving, wood carving, and traditional
+              dance forms that have been
+              passed down through generations of skilled artisans.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="people" class="people">
+    <div class="container">
+      <h2 class="section-title">Unity in Diversity</h2>
+      <div class="people-content">
+        <div class="people-text">
+          <h3 style="color: #DC143C">The Malaysian Spirit</h3>
+          <p style="text-align: justify;">Malaysia is home to a beautiful mosaic of ethnicities - Malays, Chinese,
+            Indians, and indigenous peoples,
+            each contributing their unique traditions to create our national identity. Our people speak over 130
+            languages, practice diverse religions, and celebrate differences as strengths.
+            The concept of "1Malaysia" represents our commitment to unity while preserving our rich cultural diversity.
+            From the bustling streets of Kuala Lumpur to the serene villages of Sarawak, Malaysians are known for their
+            warmth, hospitality, and the famous "Malaysian smile" that welcomes visitors from around the world.</p>
+        </div>
+        <div class="people-image">
+          <img src="img/people.jpg" alt="Malaysian People">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Section -->
+  <section id="video" class="video-section">
+    <div class="container">
+      <h2 class="section-title" style="color: black;">Experience Malaysia</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 2rem;">Immerse yourself in the sights and scenery of Malaysia</p>
+      <div class="video-container">
+        <div class="video-placeholder">
+          <video src="img/vid.mov" autoplay muted loop></video>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Cuisine Section -->
+  <section id="cuisine" class="cuisine">
+    <div class="container">
+      <h2 class="section-title">Culinary Delights</h2>
+      <div class="cuisine-grid">
+        <div class="cuisine-item">
+          <img src="img/nasi-lemak.jpg" alt="Nasi Lemak">
+          <h3>Nasi Lemak</h3>
+          <p>Malaysia's national dish - fragrant coconut rice served with sambal, anchovies, and egg</p>
+        </div>
+        <div class="cuisine-item">
+          <img src="img/rendang.jpg" alt="Rendang">
+          <h3>Rendang</h3>
+          <p>Slow-cooked spicy meat dish that's rich in coconut milk and aromatic spices</p>
+        </div>
+        <div class="cuisine-item">
+          <img src="img/charkt.jpg" alt="Char Kway Teow">
+          <h3>Char Kway Teow</h3>
+          <p>Stir-fried rice noodles with prawns, Chinese sausage, and bean sprouts</p>
+        </div>
+        <div class="cuisine-item">
+          <img src="img/rotic.jpg" alt="Roti Canai">
+          <h3>Roti Canai</h3>
+          <p>Flaky flatbread served with curry - a beloved Malaysian breakfast staple</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ms,zh-CN',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
+    // Get ?lang=zh-CN from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get("lang");
+
+    // Wait for Translate dropdown to load, then set value
+    window.addEventListener("load", () => {
+      if (lang) {
+        const interval = setInterval(() => {
+          const combo = document.querySelector(".goog-te-combo");
+          if (combo) {
+            combo.value = lang;
+            combo.dispatchEvent(new Event("change"));
+            clearInterval(interval);
+          }
+        }, 500);
+      }
+
+      // Add ?lang=... to all internal links
+      document.querySelectorAll("a").forEach(link => {
+        if (link.href.includes(".html") && lang) {
+          const newHref = link.href.split("?")[0] + "?lang=" + lang;
+          link.href = newHref;
+        }
+      });
+    });
+
+    // Store selection in URL
+    const observer = new MutationObserver(() => {
+      const combo = document.querySelector(".goog-te-combo");
+      if (combo) {
+        combo.addEventListener("change", () => {
+          const selected = combo.value;
+          const currentURL = window.location.pathname.split("/").pop();
+          window.location.href = `${currentURL}?lang=${selected}`;
+        });
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+</html>

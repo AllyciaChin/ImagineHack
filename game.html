@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/game.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="js/game.js"></script>
+  <title>Cultural Trail - Games</title>
+</head>
+
+<body>
+
+  <div id="header">
+    <nav>
+      <ul>
+        <li><a href="landing.html">Home</a></li>
+        <li><a href="explore.html">Explore</a></li>
+        <li><a href="game.html">Game</a></li>
+        <li><a href="passport.html">Passport</a></li>
+        <div id="google_translate_element"></div>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="min-h-screen bg-gradient">
+    <!-- Game Menu -->
+    <div id="game-menu" class="container">
+      <div class="header">
+        <h1>Game Reveal Arcade</h1>
+        <p>Choose your adventure and test your skills!</p>
+      </div>
+      <div class="games-grid">
+        <div class="game-card">
+          <div class="game-icon"><i class="fa-solid fa-puzzle-piece"></i></div>
+          <h2>Slider Puzzle Game</h2>
+          <p>Use a minimum number of moves to complete.</p>
+          <button onclick="showGame('game1')" class="play-btn blue">Play Game</button>
+        </div>
+        <div class="game-card">
+          <div class="game-icon">🧠</div>
+          <h2>Quiz Yourself</h2>
+          <p>Test yourself on the basic knowledge of Malaysia.</p>
+          <button onclick="showGame('game2')" class="play-btn green">Play Game</button>
+        </div>
+        <div class="game-card">
+          <div class="game-icon">🎮</div>
+          <h2>Memory Game</h2>
+          <p>Test your memory and flip over the correct pair of cards.</p>
+          <button onclick="showGame('game3')" class="play-btn pink">Play Game</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Game Sections -->
+    <section id="game1" class="game-section hidden">
+      <div class="game-header">
+        <button onclick="returnToMenu()" class="back-btn">← Back to Menu</button>
+        <h1>Petronas Twin Towers Puzzle</h1>
+        <div class="game-info">
+          <h2>Turns: <span id="turns">0</span></h2>
+          <button onclick="resetPuzzle()" class="reset-btn">🔄 Reset</button>
+        </div>
+      </div>
+      <div id="puzzle-board" class="puzzle-grid"></div>
+    </section>
+
+    <section id="game2" class="game-section hidden">
+      <div class="game-header">
+        <button onclick="returnToMenu()" class="back-btn">← Back to Menu</button>
+        <h1>Malaysia Knowledge Quiz</h1>
+      </div>
+      <div id="quiz-content"></div>
+    </section>
+
+    <section id="game3" class="game-section hidden">
+      <div class="game-header">
+        <button onclick="returnToMenu()" class="back-btn">← Back to Menu</button>
+        <h1>Memory Game</h1>
+        <div class="game-info">
+          <h2>Moves: <span id="memory-moves">0</span></h2>
+          <button onclick="resetMemory()" class="reset-btn">🔄 Reset</button>
+        </div>
+      </div>
+      <div id="memory-board" class="memory-grid"></div>
+    </section>
+  </div>
+
+  <script>
+    function preserveLanguage() {
+      const observer = new MutationObserver(() => {
+        const selectedLang = document.querySelector(".goog-te-combo")?.value;
+        if (selectedLang) {
+          localStorage.setItem("preferredLanguage", selectedLang);
+        }
+      });
+
+      observer.observe(document.body, {
+        childList: true,
+        subtree: true
+      });
+    }
+
+    window.addEventListener("load", preserveLanguage);
+
+    function applySavedLanguage() {
+      const savedLang = localStorage.getItem("preferredLanguage");
+
+      if (savedLang) {
+        const interval = setInterval(() => {
+          const combo = document.querySelector(".goog-te-combo");
+          if (combo) {
+            combo.value = savedLang;
+            combo.dispatchEvent(new Event("change")); // trigger translation
+            clearInterval(interval);
+          }
+        }, 500); // wait until widget is available
+      }
+    }
+
+    window.addEventListener("load", applySavedLanguage);
+
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        includedLanguages: 'en,ms,zh-CN',
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+      }, 'google_translate_element');
+    }
+
+    // Get ?lang=zh-CN from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const lang = urlParams.get("lang");
+
+    // Wait for Translate dropdown to load, then set value
+    window.addEventListener("load", () => {
+      if (lang) {
+        const interval = setInterval(() => {
+          const combo = document.querySelector(".goog-te-combo");
+          if (combo) {
+            combo.value = lang;
+            combo.dispatchEvent(new Event("change"));
+            clearInterval(interval);
+          }
+        }, 500);
+      }
+
+      // Add ?lang=... to all internal links
+      document.querySelectorAll("a").forEach(link => {
+        if (link.href.includes(".html") && lang) {
+          const newHref = link.href.split("?")[0] + "?lang=" + lang;
+          link.href = newHref;
+        }
+      });
+    });
+
+    // Store selection in URL
+    const observer = new MutationObserver(() => {
+      const combo = document.querySelector(".goog-te-combo");
+      if (combo) {
+        combo.addEventListener("change", () => {
+          const selected = combo.value;
+          const currentURL = window.location.pathname.split("/").pop();
+          window.location.href = `${currentURL}?lang=${selected}`;
+        });
+        observer.disconnect();
+      }
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+</body>
+
+
+</html>
