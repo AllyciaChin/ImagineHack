@@ -32,12 +32,13 @@
 - Educational and Tourism-Focused
 
 ## Live Site
-Visit: [https://yourwebsite.com](https://yourwebsite.com)
+Visit: [http://127.0.0.1:5500/landing.html](http://127.0.0.1:5500/landing.html)
 
 ## Screenshots
-![Homepage](img/homepage.png)
-![Explorepage](img/explore.png)
-![Gamepage](img/gamepage.png)
+![Home](homepage.png)
+![Explore](explore.png)
+![Game](game.png)
+![Passport](passport.png)
 
 ## Author
 
