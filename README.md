@@ -32,7 +32,7 @@
 - Educational and Tourism-Focused
 
 ## Live Site
-Visit: [http://127.0.0.1:5500/landing.html](http://127.0.0.1:5500/landing.html)
+Visit: [https://AllyciaChin.github.io/ImagineHack/landing.html](https://AllyciaChin.github.io/ImagineHack/landing.html)
 
 ## Screenshots
 ![Home](home.png)
